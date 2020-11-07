@@ -6,6 +6,9 @@ chrome.runtime.onMessage.addListener(
         if (request.message === "clicked_browser_action") {
             const firstHref = $("a[href^='http']").eq(0).attr("href");
             console.log(firstHref);
+            
+            // if content.js recieves the clicked browser action message then we send a message back to background.js telling it the url it needs to open
+            chrome.runtime.sendMessage({"message": "open_new_tab", "url": firstHref})
 
         }
     }
