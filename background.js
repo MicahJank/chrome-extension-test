@@ -9,3 +9,13 @@ chrome.browserAction.onClicked.addListener(function(tab) {
         chrome.tabs.sendMessage(activeTab.id, {"message": "clicked_browser_action"});
     })
 })
+
+// onMessage is listening for whenever a message is sent out
+chrome.runtime.onMessage.addListener(
+    // remember request is what is being sent from the message object
+    function(request, sender, sendResponse) {
+        if(request.message === "open_new_tab") {
+            chrome.tabs.create({"url": request.url})
+        }
+    }
+)
