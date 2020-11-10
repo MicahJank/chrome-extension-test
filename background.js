@@ -15,7 +15,7 @@ chrome.runtime.onMessage.addListener(
     // remember request is what is being sent from the message object
     function(request, sender, sendResponse) {
         if(request.message === "open_new_tab") {
-            chrome.tabs.create({"url": request.url}) 
+            chrome.tabs.create({"url": request.url})  
         }
     }
 )
