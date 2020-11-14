@@ -1,3 +1,6 @@
+// the state of the extension
+let active = false;
+
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         // now the console log only runs when the correct message is recieved
