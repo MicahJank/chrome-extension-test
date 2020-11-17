@@ -1,3 +1,22 @@
+let jcrop, selection;
+
+const overlay = (active => state => {
+    active = typeof state === 'boolean' ? state : state === null ? active : !active;
+    $('.jcrop-holder')[active ? 'show' : 'hide']();
+    chrome.runtime.sendMessage({message: 'active', active});
+})(false)
+
+
+const createImage = done => {
+    const image = new Image();
+    image.id = 'fake-image';
+    // image.src = chrome.runtime.getURL('')
+    image.onload = () => {
+        $('body').append(image);
+        done();
+    }
+}
+
 // the state of the extension
 let active = false;
 
