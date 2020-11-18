@@ -16,6 +16,9 @@
     "background": {
         "scripts": ["background.js"]
     },
+    "web_accessible_resources": [
+        "/images/Jcrop.gif"
+    ],
     "commands": {
         "take-screenshot": {
           "suggested_key": {
