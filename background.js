@@ -89,7 +89,7 @@ function crop (image, area, dpr, preserve, format, done) {
     var w = (dpr !== 1 && preserve) ? width : area.w
     var h = (dpr !== 1 && preserve) ? height : area.h
   
-    var canvas = null
+    var canvas = null 
     if (!canvas) {
       canvas = document.createElement('canvas')
       document.body.appendChild(canvas)
