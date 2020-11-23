@@ -98,6 +98,7 @@ function crop (image, area, dpr, preserve, format, done) {
     canvas.height = h
   
     var img = new Image()
+    console.log('image: ', img)
     img.onload = () => {
       var context = canvas.getContext('2d')
       context.drawImage(img,
