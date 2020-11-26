@@ -17,7 +17,7 @@ const createImage = done => {
     }
 }
 
-const init = done => {
+var init = done => {
     $('#fake-image').Jcrop({
         bgColor: 'none',
         onSelect: e => {
@@ -34,7 +34,7 @@ const init = done => {
         }
     }, function ready() {
         jcrop = this;
-        $('.jcrop-hline', '.jcrip.vline').css({ backgroundImage: `url(${chrome.runtime.getURL('/images/Jcrop.gif')})`});
+        $('.jcrop-hline, .jcrip.vline').css({ backgroundImage: `url(${chrome.runtime.getURL('/images/Jcrop.gif')})`});
         if (selection) {
             jcrop.setSelect([selection.x, selection.y, selection.x2, selection.y2])
         }
@@ -92,8 +92,8 @@ const save = (image, format, save) => {
 window.addEventListener('resize', ((timeout) => () => {
     clearTimeout(timeout)
     timeout = setTimeout(() => {
-      jcrop.destroy()
-      init(() => overlay(null))
+    //   jcrop.destroy()
+    //   init(() => overlay(null))
     }, 100)
   })())
 
@@ -103,7 +103,7 @@ window.addEventListener('resize', ((timeout) => () => {
       res({}) // prevent re-injecting
   
       if (!jcrop) {
-        image(() => init(() => {
+        createImage(() => init(() => {
           overlay()
           capture()
         }))

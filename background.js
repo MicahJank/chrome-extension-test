@@ -23,12 +23,12 @@ chrome.storage.sync.get((config) => {
     })
   
     var timeout = setTimeout(() => {
-      chrome.tabs.insertCSS(tab.id, {file: 'vendor/jquery.Jcrop.min.css', runAt: 'document_start'})
+      chrome.tabs.insertCSS(tab.id, {file: 'jquery/jquery.Jcrop.min.css', runAt: 'document_start'})
       chrome.tabs.insertCSS(tab.id, {file: 'css/content.css', runAt: 'document_start'})
   
-      chrome.tabs.executeScript(tab.id, {file: 'vendor/jquery.min.js', runAt: 'document_start'})
-      chrome.tabs.executeScript(tab.id, {file: 'vendor/jquery.Jcrop.min.js', runAt: 'document_start'})
-      chrome.tabs.executeScript(tab.id, {file: 'content/content.js', runAt: 'document_start'})
+      chrome.tabs.executeScript(tab.id, {file: 'jquery/jquery.min.js', runAt: 'document_start'})
+      chrome.tabs.executeScript(tab.id, {file: 'jquery/jquery.Jcrop.min.js', runAt: 'document_start'})
+      chrome.tabs.executeScript(tab.id, {file: 'content.js', runAt: 'document_start'})
   
       setTimeout(() => {
         chrome.tabs.sendMessage(tab.id, {message: 'init'})
@@ -40,6 +40,7 @@ chrome.storage.sync.get((config) => {
 // called when the user clicks on the browser action
 // injects the javascript and css when clicked
 chrome.browserAction.onClicked.addListener(function(tab) {
+    console.log('action clicked')
     inject(tab)
     // Sends a message to the active tab
     // chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
