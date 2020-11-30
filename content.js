@@ -17,7 +17,8 @@ const createImage = done => {
     }
 }
 
-var init = done => {
+var init = (done) => {
+    console.log("FROM THE CONTENT.JS/init");
     $('#fake-image').Jcrop({
         bgColor: 'none',
         onSelect: e => {
@@ -34,7 +35,8 @@ var init = done => {
         }
     }, function ready() {
         jcrop = this;
-        $('.jcrop-hline, .jcrip.vline').css({ backgroundImage: `url(${chrome.runtime.getURL('/images/Jcrop.gif')})`});
+        $('.jcrop-hline, .jcrip-vline').css({ backgroundImage: `url(${chrome.runtime.getURL('/images/Jcrop.gif')})`
+    });
         if (selection) {
             jcrop.setSelect([selection.x, selection.y, selection.x2, selection.y2])
         }
@@ -100,6 +102,7 @@ window.addEventListener('resize', ((timeout) => () => {
 
   chrome.runtime.onMessage.addListener((req, sender, res) => {
     if (req.message === 'init') {
+        
       res({}) // prevent re-injecting
   
       if (!jcrop) {

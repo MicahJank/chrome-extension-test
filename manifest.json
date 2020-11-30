@@ -1,13 +1,11 @@
 {
     "manifest_version": 2,
-    "name": "My Cool NEW Extension",
+    "name": "My Cool NEW Extension", 
     "version": "0.1",
     "content_scripts": [
         {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": ["jquery/jquery-3.5.1.min.js","content.js"] 
+            "matches": ["<all_urls>"],
+            "js": ["jquery/jquery-3.5.1.min.js","jquery/jquery.Jcrop.min.js","content.js"] 
         }
     ],
     "browser_action": {
@@ -30,6 +28,8 @@
       },
       "permissions": [
         "storage",
-        "activeTab"
+        "activeTab",
+        "declarativeContent",
+        "<all_urls>"
       ]
 } 

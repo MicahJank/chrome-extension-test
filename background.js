@@ -1,3 +1,4 @@
+console.log('HERERERE!')
 // checks the chrome storage to and if any of the config properties are not already set, it sets them
 chrome.storage.sync.get((config) => {
     if (!config.method) {
@@ -40,7 +41,6 @@ chrome.storage.sync.get((config) => {
 // called when the user clicks on the browser action
 // injects the javascript and css when clicked
 chrome.browserAction.onClicked.addListener(function(tab) {
-    console.log('action clicked')
     inject(tab)
     // Sends a message to the active tab
     // chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
